@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="SANBAD — fashion for women, men and kids.">
+
+  <title>SANBAD | Style for Every Generation</title>
+
+  <style>
+
+    :root{--cream:#faf6ee;--paper:#fffdf9;--brown:#493329;--brown2:#6c4c3b;--gold:#b58b50;--muted:#82766d;--line:#e9dfd2}
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{scroll-behavior:smooth}
+
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--brown);line-height:1.6}
+
+    a{color:inherit;text-decoration:none}
+
+    button,input,select{font:inherit}
+
+    button{cursor:pointer}
+
+    .announcement{background:var(--brown);color:#fff;text-align:center;padding:8px 12px;font-size:12px;letter-spacing:1.2px}
+
+    header{position:sticky;top:0;z-index:20;background:rgba(255,253,249,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+
+    .nav{max-width:1200px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+
+    .brand{font-family:Georgia,serif;font-weight:bold;font-size:27px;letter-spacing:1px;color:var(--brown)}
+
+    .brand span{color:var(--gold)}
+
+    nav{display:flex;gap:26px;font-size:14px}
+
+    nav a:hover{color:var(--gold)}
+
+    .nav-actions{display:flex;align-items:center;gap:12px}
+
+    .cart-btn,.menu-btn{border:1px solid var(--line);background:white;color:var(--brown);padding:9px 13px;border-radius:30px}
+
+    .menu-btn{display:none}
+
+    .hero{min-height:520px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(30,20,15,.72),rgba(30,20,15,.12)),url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1900&q=85') center/cover}
+
+    .hero-inner{max-width:1200px;width:100%;margin:auto;padding:70px 24px;color:white}
+
+    .eyebrow{font-size:12px;letter-spacing:3px;color:#e7c995;text-transform:uppercase}
+
+    h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:normal}
+
+    h1{font-size:clamp(42px,6vw,72px);line-height:1.08;max-width:650px;margin:16px 0}
+
+    .hero p{max-width:490px;color:#f5eee7;margin-bottom:28px}
+
+    .btn{display:inline-block;background:var(--gold);color:white;border:0;padding:13px 22px;border-radius:2px;font-weight:bold;font-size:13px;letter-spacing:.5px}
+
+    .btn:hover{background:var(--brown2)}
+
+    .section{max-width:1200px;margin:auto;padding:72px 24px}
+
+    .section-head{text-align:center;margin-bottom:34px}
+
+    .section-head h2{font-size:38px}
+
+    .section-head p{color:var(--muted);margin-top:7px}
+
+    .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+    .category{height:320px;position:relative;overflow:hidden;background:#ddd}
+
+    .category img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+
+    .category:hover img{transform:scale(1.05)}
+
+    .category:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+
+    .category-label{position:absolute;z-index:1;bottom:22px;left:22px;color:white}
+
+    .category-label h3{font-size:29px}
+
+    .category-label a{font-size:13px;border-bottom:1px solid #fff}
+
+    .shop-area{background:#f0e8dc}
+
+    .toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:25px}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+
+    .filter{background:transparent;border:1px solid #cbbba8;padding:8px 15px;border-radius:30px;color:var(--brown);font-size:13px}
+
+    .filter.active,.filter:hover{background:var(--brown);color:white;border-color:var(--brown)}
+
+    .search{padding:10px 14px;border:1px solid #d8cbbb;background:white;min-width:230px;border-radius:3px;outline-color:var(--gold)}
+
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+    .product{background:var(--paper);border:1px solid var(--line);position:relative}
+
+    .product img{width:100%;height:260px;object-fit:cover;display:block;background:#eee}
+
+    .product-info{padding:15px}
+
+    .tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+
+    .product h3{font-size:20px;margin:5px 0}
+
+    .price{font-weight:bold;margin:7px 0 12px}
+
+    .product-actions{display:flex;gap:8px}
+
+    .product-actions button{flex:1;padding:9px 8px;border:1px solid var(--brown);background:var(--brown);color:white;font-size:12px}
+
+    .product-actions .details{background:transparent;color:var(--brown)}
+
+    .product-actions button:hover{opacity:.8}
+
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+
+    .about img{width:100%;height:350px;object-fit:cover}
+
+    .about h2{font-size:38px;margin:8px 0 15px}
+
+    .about p{color:var(--muted);margin-bottom:18px}
+
+    .ai-band{background:var(--brown);color:white;text-align:center;padding:58px 20px}
+
+    .ai-band h2{font-size:35px}
+
+    .ai-band p{color:#e7dcd1;margin:10px auto 22px;max-width:600px}
+
+    .contact{text-align:center}
+
+    .contact p{color:var(--muted);margin:8px}
+
+    footer{background:#30221b;color:#eee;text-align:center;padding:28px 15px;font-size:13px}
+
+    footer strong{font-family:Georgia,serif;color:#d7b77f;font-size:22px}
+
+    /* cart drawer and chatbot */
+
+    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40}
+
+    .overlay.show{display:block}
+
+    .drawer{position:fixed;right:-440px;top:0;height:100%;width:min(420px,100%);background:var(--paper);z-index:41;padding:24px;transition:right .3s;overflow:auto}
+
+    .drawer.show{right:0}
+
+    .drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px}
+
+    .close{border:0;background:transparent;font-size:26px;color:var(--brown)}
+
+    .cart-item{display:grid;grid-template-columns:70px 1fr auto;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);align-items:center}
+
+    .cart-item img{width:70px;height:80px;object-fit:cover}
+
+    .cart-item small{display:block;color:var(--muted)}
+
+    .remove{border:0;background:transparent;color:#9a4b3e;font-size:12px}
+
+    .total{display:flex;justify-content:space-between;font-weight:bold;font-size:18px;padding:18px 0}
+
+    .full{width:100%;text-align:center}
+
+    .chat-launch{position:fixed;right:22px;bottom:22px;z-index:30;width:58px;height:58px;border:0;border-radius:50%;background:var(--gold);color:white;font-size:24px;box-shadow:0 5px 20px #0003}
+
+    .chat{display:none;position:fixed;right:22px;bottom:92px;width:min(350px,calc(100% - 30px));height:440px;background:white;z-index:31;box-shadow:0 8px 35px #0003;border-radius:10px;overflow:hidden}
+
+    .chat.show{display:flex;flex-direction:column}
+
+    .chat-head{background:var(--brown);color:white;padding:15px;font-weight:bold;display:flex;justify-content:space-between}
+
+    .chat-head button{background:none;border:0;color:white;font-size:20px}
+
+    .chat-messages{padding:14px;flex:1;overflow:auto;background:#fbf8f3}
+
+    .bubble{padding:10px 12px;border-radius:12px;margin:8px 0;max-width:88%;font-size:13px;white-space:pre-wrap}
+
+    .bot{background:#eee5d9}
+
+    .user{background:var(--brown);color:white;margin-left:auto}
+
+    .chat-form{display:flex;border-top:1px solid var(--line)}
+
+    .chat-form input{flex:1;border:0;padding:13px;outline:none}
+
+    .chat-form button{border:0;background:var(--gold);color:white;padding:0 17px}
+
+    .empty{color:var(--muted);text-align:center;padding:35px 5px}
+
+    @media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}nav{gap:14px}}
+
+    @media(max-width:650px){
+
+      .nav{padding:13px 16px}.menu-btn{display:block}nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--paper);padding:18px 24px;flex-direction:column;border-bottom:1px solid var(--line)}nav.open{display:flex}
+
+      .hero{min-height:460px;background-position:60% center}.hero-inner{padding:55px 22px}.categories{grid-template-columns:1fr}.category{height:280px}
+
+      .section{padding:55px 18px}.products{grid-template-columns:1fr 1fr;gap:12px}.product img{height:190px}.product-info{padding:10px}.product h3{font-size:17px}.product-actions{flex-direction:column}
+
+      .about{grid-template-columns:1fr;gap:22px}.about img{height:260px}.section-head h2,.about h2{font-size:31px}
+
+    }
+
+    @media(max-width:390px){.products{grid-template-columns:1fr}.product img{height:260px}.brand{font-size:22px}}
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="announcement">WELCOME TO SANBAD · STYLE FOR EVERY GENERATION</div>
+
+  <header>
+
+    <div class="nav">
+
+      <a class="brand" href="#home">BS <span>SANBAD</span></a>
+
+      <nav id="navLinks">
+
+        <a href="#home">Home</a><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#about">Our Story</a><a href="#contact">Contact</a>
+
+      </nav>
+
+      <div class="account-links" style="font-size:13px;white-space:nowrap">
+        {% if user.is_authenticated %}
+          Hi, {{ user.username }} · <form method="post" action="{% url 'logout' %}" style="display:inline">{% csrf_token %}<button type="submit" style="border:0;background:none;color:var(--brown);text-decoration:underline">Logout</button></form>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a> · <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+      </div>
+
+      <div class="nav-actions">
+
+        <button class="cart-btn" onclick="openCart()">Bag (<span id="cartCount">0</span>)</button>
+
+        <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Open menu">☰</button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-inner">
+
+        <div class="eyebrow">New season · New you</div>
+
+        <h1>Find the style<br>that feels like you.</h1>
+
+        <p>Discover thoughtfully selected fashion for women, men and kids — all in one place.</p>
+
+        <a class="btn" href="#shop">EXPLORE THE COLLECTION</a>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section" id="categories">
+
+      <div class="section-head"><div class="eyebrow">Explore SANBAD</div><h2>Shop by Category</h2><p>Something special for everyone in the family.</p></div>
+
+      <div class="categories">
+
+        <a class="category" href="#shop" onclick="setCategory('Women')"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80" alt="Women's ethnic fashion"><div class="category-label"><h3>Women</h3><span>Explore collection →</span></div></a>
+
+        <a class="category" href="#shop" onclick="setCategory('Men')"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=80" alt="Men's fashion"><div class="category-label"><h3>Men</h3><span>Explore collection →</span></div></a>
+
+        <a class="category" href="#shop" onclick="setCategory('Kids')"><img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=900&q=80" alt="Kids fashion"><div class="category-label"><h3>Kids</h3><span>Explore collection →</span></div></a>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="shop-area" id="shop">
+
+      <div class="section">
+
+        <div class="section-head"><div class="eyebrow">Curated for you</div><h2>Featured Collection</h2><p>Explore the latest products added to the SANBAD store.</p></div>
+
+        <div class="toolbar">
+
+          <div class="filters">
+
+            <button class="filter active" onclick="setCategory('All',this)">All</button>
+
+            <button class="filter" onclick="setCategory('Women',this)">Women</button>
+
+            <button class="filter" onclick="setCategory('Men',this)">Men</button>
+
+            <button class="filter" onclick="setCategory('Kids',this)">Kids</button>
+
+          </div>
+
+          <input class="search" id="searchInput" type="search" placeholder="Search products..." oninput="renderProducts()">
+
+        </div>
+
+        <div class="products" id="productGrid"></div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="section about" id="about">
+
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=80" alt="Fashion shopping">
+
+      <div><div class="eyebrow">Our story</div><h2>Fashion for every generation.</h2><p>Welcome to SANBAD. We bring together styles for women, men and kids so the whole family can find something they love. Explore your look, celebrate your individuality and make every day a little more stylish.</p><a href="#shop" class="btn">DISCOVER OUR PICKS</a></div>
+
+    </section>
+
+
+
+    <section class="ai-band">
+
+      <div class="eyebrow">Your personal style companion</div>
+
+      <h2>Meet the SANBAD STYLE AI</h2>
+
+      <p>Tell our style assistant what you are shopping for, your occasion and your budget. It can help you explore the collection.</p>
+
+      <button class="btn" onclick="toggleChat()">CHAT WITH THE STYLE ASSISTANT ✨</button>
+
+    </section>
+
+
+
+    <section class="section contact" id="contact">
+
+      <div class="eyebrow">We would love to hear from you</div><h2>Contact SANBAD</h2>
+
+      <p>Email: your-email@example.com</p><p>Phone / WhatsApp: +91-XXXXXXXXXX</p><p>Location: Add your store address here</p>
+
+    </section>
+
+  </main>
+
+
+
+  <footer><strong>SANBAD</strong><p>Style for Every Generation</p><p>© <span id="year"></span> SANBAD. All rights reserved.</p></footer>
+
+
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+
+    <div class="drawer-head"><h2>Your Shopping Bag</h2><button class="close" onclick="closeCart()" aria-label="Close cart">×</button></div>
+
+    <div id="cartItems"></div>
+
+    <div class="total"><span>Total</span><span id="cartTotal">₹0</span></div>
+
+    <button class="btn full" onclick="checkout()">PLACE ORDER ON WHATSAPP</button>
+
+    <p style="font-size:11px;color:#82766d;margin-top:12px">Demo checkout: update the WhatsApp number in the JavaScript before accepting customer orders.</p>
+
+  </aside>
+
+
+
+  <button class="chat-launch" onclick="toggleChat()" aria-label="Open fashion assistant">✦</button>
+
+  <section class="chat" id="chatBox" aria-label="SANBAD style assistant">
+
+    <div class="chat-head">SANBAD STYLE AI <button onclick="toggleChat()" aria-label="Close chat">×</button></div>
+
+    <div class="chat-messages" id="chatMessages"><div class="bubble bot">Hello! I’m SANBAD STYLE AI. 👋 Tell me what you’re shopping for, your occasion, or your budget. I’ll help you find something from our collection.</div></div>
+
+    <form class="chat-form" onsubmit="sendChat(event)"><input id="chatInput" placeholder="Ask for an outfit..." autocomplete="off"><button type="submit">Send</button></form>
+
+  </section>
+
+
+
+  <script>
+
+    // Products are loaded from the Django database through /api/products/.
+    let products = [];
+
+    let activeCategory = "All";
+
+    let cart = JSON.parse(localStorage.getItem("sanbraCart") || "[]");
+
+    const money = n => "₹" + Number(n).toLocaleString("en-IN");
+
+
+
+    function renderProducts(){
+
+      const q = document.getElementById("searchInput").value.toLowerCase();
+
+      const list = products.filter(p => (activeCategory==="All" || p.category===activeCategory) && (p.name.toLowerCase().includes(q) || p.tag.toLowerCase().includes(q)));
+
+      document.getElementById("productGrid").innerHTML = list.length ? list.map(p => `
+
+        <article class="product">
+
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+
+          <div class="product-info"><span class="tag">${p.category} · ${p.tag}</span><h3>${p.name}</h3><div class="price">${money(p.price)}</div>
+
+            <div class="product-actions"><button onclick="addToCart(${p.id})" ${p.stock <= 0 ? "disabled" : ""}>${p.stock <= 0 ? "OUT OF STOCK" : "ADD TO BAG"}</button><button class="details" onclick="showDetails(${p.id})">DETAILS</button></div>
+
+          </div>
+
+        </article>`).join("") : '<p class="empty">No products found. Try another search.</p>';
+
+    }
+
+    function setCategory(category, button){
+
+      activeCategory = category;
+
+      document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+
+      if(button) button.classList.add("active");
+
+      else document.querySelectorAll(".filter").forEach(b=>{if(b.textContent===category)b.classList.add("active")});
+
+      renderProducts();
+
+    }
+
+    function addToCart(id){
+
+      const product = products.find(p => p.id === id);
+      if(!product) return;
+      if(product.stock <= 0){
+        alert("Sorry, this product is currently out of stock.");
+        return;
+      }
+
+      const item = cart.find(x=>x.id===id);
+      if(item){
+        if(item.qty >= product.stock){
+          alert("You have reached the available stock for this product.");
+          return;
+        }
+        item.qty++;
+      } else {
+        cart.push({id,qty:1});
+      }
+      saveCart();
+    }
+
+    function saveCart(){
+
+      localStorage.setItem("sanbraCart",JSON.stringify(cart));
+
+      document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
+
+      renderCart();
+
+    }
+
+    function renderCart(){
+
+      const box=document.getElementById("cartItems");
+
+      if(!cart.length){box.innerHTML='<p class="empty">Your bag is empty. Explore the collection to add something you love.</p>';document.getElementById("cartTotal").textContent=money(0);return;}
+
+      cart = cart.filter(x => products.some(p => p.id === x.id));
+      if(!cart.length){
+        localStorage.setItem("sanbraCart", JSON.stringify(cart));
+        box.innerHTML = '<p class="empty">Your bag is empty. Explore the collection to add something you love.</p>';
+        document.getElementById("cartTotal").textContent = money(0);
+        return;
+      }
+      box.innerHTML = cart.map(x => {
+        const p = products.find(y => y.id === x.id);
+        return `<div class="cart-item"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><small>${money(p.price)} × ${x.qty}</small><button class="remove" onclick="removeItem(${p.id})">Remove</button></div><strong>${money(p.price*x.qty)}</strong></div>`;
+      }).join("");
+
+      document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0));
+
+    }
+
+    function removeItem(id){cart=cart.filter(x=>x.id!==id);saveCart();}
+
+    function openCart(){document.getElementById("overlay").classList.add("show");document.getElementById("cartDrawer").classList.add("show");}
+
+    function closeCart(){document.getElementById("overlay").classList.remove("show");document.getElementById("cartDrawer").classList.remove("show");}
+
+    function showDetails(id){const p=products.find(x=>x.id===id);if(!p)return;alert(`${p.name}\\nCategory: ${p.category}\\nPrice: ${money(p.price)}\\nStock: ${p.stock}\\n\\n${p.description || "No product description has been added yet."}`);}
+
+    function checkout(){
+
+      if(!cart.length){alert("Your shopping bag is empty.");return;}
+
+      // Replace with your business WhatsApp number including country code, digits only.
+
+      const whatsappNumber = "91XXXXXXXXXX";
+
+      if(whatsappNumber.includes("X")){alert("Demo checkout only. Add your WhatsApp number in script.js before taking orders.");return;}
+
+      const lines=cart.map(x=>{const p=products.find(y=>y.id===x.id);return `${p.name} x ${x.qty} — ${money(p.price*x.qty)}`});
+
+      const total=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0);
+
+      const message=encodeURIComponent("Hello SANBAD! I would like to place an order:\\\n"+lines.join("\\\n")+"\\\nTotal: "+money(total));
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`,"_blank");
+
+    }
+
+    function toggleChat(){document.getElementById("chatBox").classList.toggle("show");}
+
+    function addBubble(text,who){const el=document.createElement("div");el.className="bubble "+who;el.textContent=text;document.getElementById("chatMessages").appendChild(el);document.getElementById("chatMessages").scrollTop=99999;return el;}
+
+    async function sendChat(e){
+      e.preventDefault();
+      const input=document.getElementById("chatInput");
+      const text=input.value.trim();
+      if(!text) return;
+      addBubble(text,"user");
+      input.value="";
+      input.disabled=true;
+      const sendButton=document.querySelector(".chat-form button");
+      sendButton.disabled=true;
+      const waiting=addBubble("SANBAD STYLE AI is thinking...","bot");
+      try {
+        const csrfCookie=document.cookie.split("; ").find(row=>row.startsWith("csrftoken="));
+        const csrfToken=csrfCookie ? decodeURIComponent(csrfCookie.split("=")[1]) : "";
+        const response=await fetch("/api/style-ai/",{
+          method:"POST",
+          headers:{"Content-Type":"application/json","X-CSRFToken":csrfToken},
+          body:JSON.stringify({message:text})
+        });
+        const data=await response.json();
+        waiting.textContent=data.reply || data.error || "Sorry, I could not respond. Please try again.";
+      } catch(error) {
+        waiting.textContent="I can't connect right now. Please check your internet connection and try again.";
+      } finally {
+        input.disabled=false;
+        sendButton.disabled=false;
+        input.focus();
+        document.getElementById("chatMessages").scrollTop=99999;
+      }
+    }
+
+    document.getElementById("year").textContent=new Date().getFullYear();
+
+    async function loadProducts(){
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = '<p class="empty">Loading products...</p>';
+      try {
+        const response = await fetch("/api/products/");
+        if (!response.ok) throw new Error("Could not load products");
+        products = await response.json();
+        renderProducts();
+        renderCart();
+      } catch (error) {
+        grid.innerHTML = '<p class="empty">Unable to load products. Please check that the Django server is running and products have been added in Admin.</p>';
+        console.error(error);
+      }
+    }
+
+    loadProducts();
+    saveCart();
+
+  </script>
+
+</body>
+
+</html>
